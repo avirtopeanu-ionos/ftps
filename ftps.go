@@ -33,7 +33,7 @@ type DialOptions struct {
 	Host     string
 	Port     int // If zero, this will default to 990.
 	Username string
-	Passowrd string
+	Password string
 
 	// If true, will connect un-encrypted, then upgrade to using AUTH TLS command.
 	ExplicitTLS bool
@@ -96,7 +96,7 @@ func (c *Client) setup() error {
 	if _, err := c.cmd(331, "USER %s", c.opt.Username); err != nil {
 		return err
 	}
-	if _, err := c.cmd(230, "PASS %s", c.opt.Passowrd); err != nil {
+	if _, err := c.cmd(230, "PASS %s", c.opt.Password); err != nil {
 		return err
 	}
 	if _, err := c.cmd(200, "TYPE I"); err != nil {
